@@ -39,31 +39,52 @@
       </div>
     </nav>
 
-    <div class="fluid-container">
-      <form action="">
-        <h1>Login</h1>
+    <div class="container form-container">
+      <div class="col-md-6 col-lg-5">
+        <form>
+          <h1>Login</h1>
 
-        <div class="input-box">
-          <input type="text" placeholder="Username" required />
-          <i class="bx bxs-user"></i>
-        </div>
+          <div class="mb-3 input-group">
+            <span class="input-group-text"
+              ><i class="bx bxs-envelope"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="E-mail"
+              required
+            />
+          </div>
 
-        <div class="input-box">
-          <input type="password" placeholder="Password" required />
-          <i class="bx bxs-lock-alt"></i>
-        </div>
+          <div class="mb-3 input-group">
+            <span class="input-group-text"
+              ><i class="bx bxs-lock-alt"></i
+            ></span>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              required
+            />
+          </div>
 
-        <div class="remember-forgot">
-          <label><input type="checkbox" /> Remember me</label>
-          <a href="#">Forgot password?</a>
-        </div>
+          <div class="remember-me">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="remember"
+              name="Remember me"
+            />
+            <label for="form-check-label">Remember me</label>
+          </div>
 
-        <button type="submit" class="btn btn-danger">Login</button>
+          <button type="submit" class="btn btn-danger">Login</button>
 
-        <div class="register-link">
-          <p>Don't have an account? <a href="#">Register</a></p>
-        </div>
-      </form>
+          <div class="text-center">
+            <p>Don't have an account? <a href="/register.html"> Register</a></p>
+          </div>
+        </form>
+      </div>
     </div>
 
     <footer>
