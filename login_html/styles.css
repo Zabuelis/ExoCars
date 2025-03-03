@@ -29,6 +29,10 @@ form {
     align-items: center;
 }
 
+.input-group {
+    margin-bottom: 1rem;
+}
+
 .form-control {
     background-color: #252A34;
     color: #EEEEEE;
