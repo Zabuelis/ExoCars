@@ -53,6 +53,6 @@ footer {
     display: flex;
     align-items: center;
     text-align: left;
-    min-height: 100px;
+    height: 100px;
     background-color: #2b3035;
 }
