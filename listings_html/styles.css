@@ -3,7 +3,6 @@
 
 body{
     background-color: #252A34;
-    height: 100vh;
 }
 
 .filter-container {
@@ -37,14 +36,17 @@ body{
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    min-height: 100vh;
 }
 
 
 .container-list {
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    max-width: 65%;
 }
 
-.col { 
+.col {
     display: flex;
     justify-content: center;
 }
