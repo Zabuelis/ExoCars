@@ -11,7 +11,8 @@ CREATE TABLE account (
     pId INTEGER DEFAULT 1 REFERENCES privilege(pId),
     fName VARCHAR(40) NOT NULL,
     lName VARCHAR(40) NOT NULL,
-    eMail VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    eMail VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE carListing (
