@@ -1,6 +1,6 @@
 // Function for filtering displayed cars
 function searchCars() {
-    var input, filter, col, cardTitle, card, a, i, txtValue;
+    var input, filter, col, cardTitle, card, i, txtValue;
     input = document.getElementById("carSearch")
     filter = input.value.toUpperCase();
     col = document.getElementsByClassName("col");
