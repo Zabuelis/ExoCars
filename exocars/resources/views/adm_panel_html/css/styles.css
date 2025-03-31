@@ -1,0 +1,29 @@
+.user-removal {
+    margin-bottom: 20px;
+}
+
+.popup {
+    background-color: #2b3035;
+    width: 30%;
+    margin-top: 10px;
+    visibility: hidden;
+    height: 1px;
+}
+
+.open-popup {
+    visibility: visible;
+    transform: scale(1);
+    height: 100%;
+}
+
+#popup-form {
+    background-color: #2b3035;
+    border: none;
+    color: #EEEEEE;
+    height: 50px;
+}
+
+#popup-button {
+ margin: 20px;
+
+}
