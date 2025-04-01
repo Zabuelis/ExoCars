@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id('m_id');
-            $table->foreignId('a_id');
+            $table->foreignId('a_id')->unique();
             $table->foreignId('c_id');
             $table->date('date');
             $table->time('time');

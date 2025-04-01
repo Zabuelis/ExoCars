@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('privileges', function (Blueprint $table) {
             $table->id('p_id');
-            $table->string('privilege_name', 50)->unique()->nullable(false);
+            $table->string('privilege_name', 50)->unique();
         });
     }
 

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id("a_id");
-            $table->string('f_name', 50)->nullable(false);
-            $table->string("l_name", 50)->nullable(false);
-            $table->string('e_mail', 100)->nullable(false);
+            $table->string('f_name', 50);
+            $table->string("l_name", 50);
+            $table->string('e_mail', 100);
             $table->foreignId('p_id')->default(1);
-            $table->string('password', 100)->nullable(false);
+            $table->string('password', 255);
 
             $table->foreign('p_id')->references('p_id')->on('privileges');
         });

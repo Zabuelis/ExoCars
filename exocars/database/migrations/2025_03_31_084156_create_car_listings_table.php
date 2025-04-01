@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('make_year');
             $table->string('color', 20);
             $table->integer('price');
-            $table->string('imgPath', 255);
+            $table->string('img_path', 255);
             $table->string('manufacturer', 50);
             $table->double('displacement');
             $table->integer('power');
