@@ -7,7 +7,9 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
-Route::view('/', 'welcome');
+Route::view('/', 'pages.home');
+Route::view('/admin', 'admin.dashboard');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
