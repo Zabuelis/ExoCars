@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxury car dealers</title>
-    <link rel="stylesheet" href="{{ asset('css/home/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/css/preview/styles.css') }}" />
   </head>
   <body>
     <header>
@@ -33,42 +33,64 @@
       </nav>
     </header>
 
-    <!-- Image display -->
-    <div class="hero">
-      <img
-        src="{{ asset('/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg') }}"
-        class="img-fluid"
-        alt="Ferrari"
-      />
-      <p class="text-center position-absolute">Welcome to ExoCars</p>
-    </div>
-
-    <!-- Text in cubes-->
-    <div class="container">
-      <div class="row gy-5">
-        <div class="col-6">
-          <div class="p-3">
-            We're the biggest distributors of Ferrari automobiles in Lithuania.
+    <!-- Display of car's image and information-->
+    <div class="fluid-container main">
+      <div class="car-presentation">
+        <h1 class="h1">Car Name</h1>
+        <img
+          src="{{ ('/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg') }}"
+          class="img-fluid"
+        />
+        <h3 class="h3">Vehicle Information</h3>
+        <div class="car-information">
+          <div class="list">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Brand</th>
+                  <td>Ferrari</td>
+                </tr>
+                <tr>
+                  <th scope="row">Model</th>
+                  <td>SF90</td>
+                </tr>
+                <tr>
+                  <th scope="row">Make Year</th>
+                  <td>2020</td>
+                </tr>
+                <tr>
+                  <th scope="row">Mileage</th>
+                  <td>16005km</td>
+                </tr>
+                <tr>
+                  <th scope="row">Color</th>
+                  <td>Red</td>
+                </tr>
+                <tr>
+                  <th scope="row">Condition</th>
+                  <td>Mint</td>
+                </tr>
+                <tr>
+                  <th scope="row">Price</th>
+                  <td>250000 Euro</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="col-6">
-          <div class="p-3">We're officialy partnered with Ferrari.</div>
-        </div>
-        <div class="col-6">
-          <div class="p-3">We promise to take care of all your problems.</div>
-        </div>
-        <div class="col-6">
-          <div class="p-3">We make dreams become reality.</div>
+        <div class="meet">
+          <a href="#" class="btn btn-danger">Schedule a meeting</a>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer-->
     <footer>
       <div class="container-fluid footer">
         <p>All rights reserved to ExoCars®</p>
       </div>
     </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
