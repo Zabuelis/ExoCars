@@ -2,15 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\CarListingsController;
 
 Route::view('/', 'pages.home');
 Route::view('/admin', 'admin.dashboard');
-Route::view('/listings', 'pages.listings');
-Route::view('/preview', 'pages.preview');
+
+Route::get('/listings', [CarListingsController::class, 'index']);
+Route::get('/preview/{id}', [CarListingsController::class, 'show']);
 Route::view('/login', 'user.login');
 Route::view('/register', 'user.register');
 
