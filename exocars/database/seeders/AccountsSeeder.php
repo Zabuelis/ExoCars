@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\Accounts;
+use Illuminate\Support\Facades\Schema;
 
 class AccountsSeeder extends Seeder
 {

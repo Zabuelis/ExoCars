@@ -25,5 +25,13 @@
 
 #popup-button {
     margin: 20px;
+}
 
+th {
+    max-width: 300px;
+}
+
+.img-thumbnail {
+    height: 300px;
+    width: auto;
 }

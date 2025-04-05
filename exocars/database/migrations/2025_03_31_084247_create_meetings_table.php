@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('date');
             $table->time('time');
 
-            $table->foreign('a_id')->references('a_id')->on('accounts');
-            $table->foreign('c_id')->references('c_id')->on('car_listings');
+            $table->foreign('a_id')->references('a_id')->on('accounts')->onDelete('cascade');
+            $table->foreign('c_id')->references('c_id')->on('car_listings')->onDelete('cascade');
         });
     }
 
