@@ -226,7 +226,8 @@
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Name</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
                       <th>E-mail</th>
                       <th>Remove User</th>
                     </tr>
@@ -234,7 +235,8 @@
                   <tfoot>
                     <tr>
                       <th>Id</th>
-                      <th>Name</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
                       <th>E-mail</th>
                       <th>Remove User</th>
                     </tr>
@@ -244,6 +246,7 @@
                     <tr>
                       <td>{{ $account['a_id'] }}</td>
                       <td>{{ $account['f_name'] }}</td>
+                      <td>{{ $account['l_name'] }}</td>
                       <td>{{ $account['e_mail'] }}</td>
                       <td> <a href="/admin/remove_user/{{ $account['a_id'] }}" class="btn btn-danger">User {{ $account['a_id'] }} </a>
                       </td>

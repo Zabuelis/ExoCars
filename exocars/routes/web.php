@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarListingsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AccountsController;
 
-Route::view('/', 'pages.home');
+Route::view('/', 'pages.home')->name('home');
 
 Route::get('/listings', [CarListingsController::class, 'index']);
 Route::get('/preview/{id}', [CarListingsController::class, 'show']);
@@ -16,6 +17,8 @@ Route::get('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeetin
 
 Route::view('/login', 'user.login');
 Route::view('/register', 'user.register');
+
+Route::post('/register', [AccountsController::class, 'store'])->name('register.store');
 
 Route::middleware([
     'auth:sanctum',

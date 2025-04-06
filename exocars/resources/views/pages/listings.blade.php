@@ -78,7 +78,6 @@
       </div>
     </div>
   </div>
-
   <!-- Footer-->
   <footer>
     <div class="container-fluid footer">
