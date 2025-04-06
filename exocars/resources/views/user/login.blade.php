@@ -12,35 +12,11 @@
 </head>
 
 <body>
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"> ExoCars </a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Listings</a>
-          <a class="nav-link" href="/login">Log In </a>
-          <a class="nav-link" href="/admin">Admin Panel </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
+  @include('components.navbar')
   <!-- Login form-->
   <div class="container form-container">
     <div class="col-md-6 col-lg-4">
-      <form>
+      <form action="{{ route('make.login') }}" method="POST">
         @csrf
         <h1>Login</h1>
 
@@ -50,6 +26,8 @@
             type="email"
             class="form-control"
             placeholder="E-mail"
+            name="e_mail"
+            value="{{ old('e_mail') }}"
             required />
         </div>
 
@@ -59,6 +37,7 @@
             type="password"
             class="form-control"
             placeholder="Password"
+            name="password"
             required />
         </div>
 

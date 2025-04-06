@@ -26,19 +26,7 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'f_name' => 'required|string|max:255',
-            'l_name' => 'required|string|max:255',
-            'e_mail' => 'required|email|max:255|unique:account,e_mail',
-            'password' => 'required|string|max:255',
-            're_password' => 'required|string|max:255|same:password'
-        ]);
-
-        $validated['password'] = Hash::make($validated['password']);
-
-        Account::create($validated);
-
-        return redirect()->route('home');
+        //
     }
 
     /**
