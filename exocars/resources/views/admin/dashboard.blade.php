@@ -199,7 +199,12 @@
                       <th>{{ $meeting['c_id'] }}</th>
                       <th>{{ $meeting['date'] }}</th>
                       <th>{{ $meeting['time'] }}</th>
-                      <td> <a href="/admin/remove_meeting/{{ $meeting['m_id'] }}" class="btn btn-danger">Meeting {{ $meeting['m_id'] }} </a>
+                      <td>
+                        <form action="{{ route('destroy.meeting', $meeting['m_id']) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Meeting {{ $meeting['m_id'] }} </button>
+                        </form>
                       </td>
                     </tr>
                     @endforeach
@@ -248,7 +253,12 @@
                       <td>{{ $account['f_name'] }}</td>
                       <td>{{ $account['l_name'] }}</td>
                       <td>{{ $account['e_mail'] }}</td>
-                      <td> <a href="/admin/remove_user/{{ $account['a_id'] }}" class="btn btn-danger">User {{ $account['a_id'] }} </a>
+                      <td>
+                        <form action="{{ route('destroy.user', $account['a_id']) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">User {{ $account['a_id'] }} </button>
+                        </form>
                       </td>
                     </tr>
                     @endforeach
@@ -305,7 +315,12 @@
                           id="listingImg"
                           alt="...">
                       </th>
-                      <td> <a href="/admin/remove_listing/{{ $listing['c_id'] }}" class="btn btn-danger">Listing {{ $listing['c_id'] }} </a>
+                      <td>
+                        <form action="{{ route('destroy.listing', $listing['c_id']) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Listing {{ $listing['c_id'] }} </button>
+                        </form>
                       </td>
                     </tr>
                     @endforeach

@@ -11,9 +11,9 @@ Route::view('/', 'pages.home')->name('home');
 Route::get('/listings', [CarListingsController::class, 'index']);
 Route::get('/preview/{id}', [CarListingsController::class, 'show']);
 Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/admin/remove_user/{id}', [AdminController::class, 'destroyUser']);
-Route::get('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing']);
-Route::get('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting']);
+Route::delete('/admin/remove_user/{id}', [AdminController::class, 'destroyUser'])->name('destroy.user');
+Route::delete('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing'])->name('destroy.listing');
+Route::delete('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting'])->name('destroy.meeting');
 
 Route::view('/login', 'user.login');
 Route::view('/register', 'user.register');
