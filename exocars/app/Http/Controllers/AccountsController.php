@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Accounts;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,14 +29,14 @@ class AccountsController extends Controller
         $validated = $request->validate([
             'f_name' => 'required|string|max:255',
             'l_name' => 'required|string|max:255',
-            'e_mail' => 'required|email|max:255|unique:accounts,e_mail',
+            'e_mail' => 'required|email|max:255|unique:account,e_mail',
             'password' => 'required|string|max:255',
             're_password' => 'required|string|max:255|same:password'
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
 
-        Accounts::create($validated);
+        Account::create($validated);
 
         return redirect()->route('home');
     }
