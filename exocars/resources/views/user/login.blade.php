@@ -16,7 +16,7 @@
   <!-- Login form-->
   <div class="container form-container">
     <div class="col-md-6 col-lg-4">
-      <form action="{{ route('make.login') }}" method="POST">
+      <form id="log_form" action="{{ route('make.login') }}" method="POST">
         @csrf
         <h1>Login</h1>
 
@@ -55,6 +55,14 @@
         <div class="text-center">
           <p>Don't have an account? <a href="/register"> Register</a></p>
         </div>
+
+        @if($errors->any())
+        <ul>
+          @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+        @endif
       </form>
     </div>
   </div>

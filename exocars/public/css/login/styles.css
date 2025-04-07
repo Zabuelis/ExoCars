@@ -14,7 +14,7 @@ body {
     color: #EEEEEE;
 }
 
-form {
+form#log_form {
     background-color: #212529;
     padding: 20px;
     border-radius: 10px;

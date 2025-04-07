@@ -17,7 +17,7 @@
   <!-- Register form -->
   <div class="container form-container">
     <div class="col-md-6 col-lg-4">
-      <form action="{{ route('make.register') }}" method="POST">
+      <form id="log_form" action="{{ route('make.register') }}" method="POST">
         @csrf
         <h1>Register</h1>
 
@@ -74,23 +74,24 @@
             class="form-control"
             placeholder="Enter password again"
             id="re_password"
-            name="re_password"
+            name="password_confirmation"
             required />
         </div>
 
         <button type="submit" class="btn btn-danger">Register</button>
 
+        <div class="text-center">
+          <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+
         @if($errors->any())
-        <ul class="px-4 py-2 bg-red-100">
+        <ul>
           @foreach($errors->all() as $error)
-          <li class="my-2 text-red-500">{{ $error }}</li>
+          <li>{{ $error }}</li>
           @endforeach
         </ul>
         @endif
 
-        <div class="text-center">
-          <p>Already have an account? <a href="/login">Login</a></p>
-        </div>
       </form>
     </div>
   </div>

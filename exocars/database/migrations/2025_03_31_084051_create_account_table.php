@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('f_name', 50);
             $table->string("l_name", 50);
             $table->string('e_mail', 100);
+            $table->rememberToken();
             $table->foreignId('p_id')->default(1);
             $table->string('password', 255);
 

@@ -7,29 +7,31 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AuthController;
 
+// Public
 Route::view('/', 'pages.home')->name('home');
-
 Route::get('/listings', [CarListingsController::class, 'index']);
 
-Route::get('/preview/{id}', [CarListingsController::class, 'show']);
+Route::get('/logout', function () {
+    return redirect()->route('login');
+});
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::delete('/admin/remove_user/{id}', [AdminController::class, 'destroyUser'])->name('destroy.user');
-Route::delete('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing'])->name('destroy.listing');
-Route::delete('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting'])->name('destroy.meeting');
+// Authentication
+Route::middleware('guest')->controller(AuthController::class)->group(function () {
+    Route::get('/login', 'showLogin')->name('login');
+    Route::get('/register', 'showRegister')->name('register');
+    Route::post('/login', 'login')->name('make.login');
+    Route::post('/register', 'register')->name('make.register');
+});
 
-Route::get('/login', [AuthController::class, 'showLogin']);
-Route::get('/register', [AuthController::class, 'showRegister']);
+// Only for authenticated users
+Route::middleware('auth')->group(function () {
+    // Common user
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/preview/{id}', [CarListingsController::class, 'show']);
 
-Route::post('/login', [AuthController::class, 'login'])->name('make.login');
-Route::post('/register', [AuthController::class, 'register'])->name('make.register');
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Admin
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::delete('/admin/remove_user/{id}', [AdminController::class, 'destroyUser'])->name('destroy.user');
+    Route::delete('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing'])->name('destroy.listing');
+    Route::delete('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting'])->name('destroy.meeting');
 });

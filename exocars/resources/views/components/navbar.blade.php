@@ -15,8 +15,15 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" href="/listings">Listings</a>
-                    <a class="nav-link" href="/login">Log In </a>
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="nav-link">Logout</button>
+                    </form>
                     <a class="nav-link" href="/admin">Admin Panel </a>
+                    @else
+                    <a class="nav-link" href="/login">Log In </a>
+                    @endauth
                 </div>
             </div>
         </div>
