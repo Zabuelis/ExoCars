@@ -13,7 +13,10 @@ class PrivilegeSeeder extends Seeder
      */
     public function run(): void
     {
-        $privileges = [['p_id' => '1', 'privilege_name' => 'user'], ['p_id' => '2', 'privilege_name' => 'admin']];
+        $privileges = [
+            ['p_id' => '1', 'privilege_name' => 'user'],
+            ['p_id' => '2', 'privilege_name' => 'admin']
+        ];
         foreach ($privileges as $privilege) {
             DB::table('privilege')->insert($privilege);
         }

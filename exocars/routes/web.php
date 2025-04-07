@@ -12,7 +12,7 @@ Route::view('/', 'pages.home')->name('home');
 Route::get('/listings', [CarListingsController::class, 'index']);
 
 Route::get('/logout', function () {
-    return redirect()->route('login');
+    return redirect()->route('home');
 });
 
 // Authentication
@@ -25,13 +25,15 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
 
 // Only for authenticated users
 Route::middleware('auth')->group(function () {
+    // Admin
+    Route::middleware('is_admin')->group(function () {
+        Route::get('/admin', [AdminController::class, 'index']);
+        Route::delete('/admin/remove_user/{id}', [AdminController::class, 'destroyUser'])->name('destroy.user');
+        Route::delete('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing'])->name('destroy.listing');
+        Route::delete('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting'])->name('destroy.meeting');
+    });
+
     // Common user
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/preview/{id}', [CarListingsController::class, 'show']);
-
-    // Admin
-    Route::get('/admin', [AdminController::class, 'index']);
-    Route::delete('/admin/remove_user/{id}', [AdminController::class, 'destroyUser'])->name('destroy.user');
-    Route::delete('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing'])->name('destroy.listing');
-    Route::delete('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting'])->name('destroy.meeting');
 });
