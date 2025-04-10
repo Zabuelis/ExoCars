@@ -44,4 +44,32 @@ class AdminController extends Controller
 
         return redirect()->back()->with('successful', 'Listing removed');
     }
+
+    public function insertListing(Request $request)
+    {
+        $validated = $request->validate([
+            'model' => 'required|string|max:50',
+            'mileage' => 'required|integer',
+            'comments' => 'required|string|max:255',
+            'make_year' => 'required|integer',
+            'color' => 'required|string|max:20',
+            'price' => 'required|integer',
+            'img_path' => 'required|mimes:jpg,png,jpeg',
+            'manufacturer' => 'required|string|max:50',
+            'displacement' => 'required|numeric',
+            'power' => 'required|integer'
+        ]);
+
+        $file = $request['img_path'];
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+        $path = ('images/listings/');
+        $file->move($path, $filename);
+
+        $validated['img_path'] = $path . $filename;
+
+        CarListing::create($validated);
+
+        return redirect()->back()->with('successful', 'Listing created');
+    }
 }

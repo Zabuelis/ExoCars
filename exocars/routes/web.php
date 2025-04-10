@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/admin/remove_user/{id}', [AdminController::class, 'destroyUser'])->name('destroy.user');
         Route::delete('/admin/remove_listing/{id}', [AdminController::class, 'destroyListing'])->name('destroy.listing');
         Route::delete('/admin/remove_meeting/{id}', [AdminController::class, 'destroyMeeting'])->name('destroy.meeting');
+        Route::post('/admin/insert_listing', [AdminController::class, 'insertListing'])->name('insert.listing');
     });
 
     // Common user

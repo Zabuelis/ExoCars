@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('c_id');
             $table->string('model', 50);
             $table->integer('mileage');
-            $table->string('comments', 255);
+            $table->string('comments', 255)->nullable(true);
             $table->integer('make_year');
             $table->string('color', 20);
             $table->integer('price');

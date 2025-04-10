@@ -22,6 +22,4 @@ class CarListingsController extends Controller
     }
 
     public function create() {}
-
-    public function store() {}
 }

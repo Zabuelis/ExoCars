@@ -14,15 +14,14 @@ class AccountSeeder extends Seeder
      */
     public function run(): void
     {
-        Account::factory(10)->create();
 
         DB::table('account')->insert([
-            'a_id' => '9696445',
             'f_name' => 'Good',
             'l_name' => 'Admin',
             'e_mail' => 'goodadmin@gmail.com',
             'p_id' => '2',
             'password' => Hash::make("adminpass")
         ]);
+        Account::factory(10)->create();
     }
 }

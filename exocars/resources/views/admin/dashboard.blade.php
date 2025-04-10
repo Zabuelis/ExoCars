@@ -268,6 +268,143 @@
             </div>
           </div>
 
+          <div class="car_insert">
+            <button id="insert_a_listing" type="button" class="btn btn-success" onclick="displayInsert()">Insert a Listing</button>
+            <div class="insert_form" id="listing_form">
+              <form action="{{ route('insert.listing') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="container-fluid text-center">
+                  <h1>Insert a Car</h1>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Car Model"
+                          name="model"
+                          value="{{ old('model') }}"
+                          required />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Car Mileage"
+                          name="mileage"
+                          value="{{ old('mileage') }}"
+                          required />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Car description"
+                          name="comments"
+                          value="{{ old('comments') }}"
+                          required />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Make Year"
+                          name="make_year"
+                          value="{{ old('make_year') }}"
+                          required />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Price"
+                          name="price"
+                          value="{{ old('price') }}"
+                          required />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Manufacturer"
+                          name="manufacturer"
+                          value="{{ old('manufacturer') }}"
+                          required />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Displacement"
+                          name="displacement"
+                          value="{{ old('displacement') }}"
+                          required />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Power"
+                          value="{{ old('power') }}"
+                          name="power"
+                          required />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Color"
+                          name="color"
+                          value="{{ old('color') }}"
+                          required />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <input class="form-control" type="file" id="formFile" name="img_path" required />
+                    </div>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <button id="submit_car_button" type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    <div class="col-6">
+                      <button id="cancel_car_button" class="btn btn-danger" onclick="hideInsert()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          @if($errors->any())
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+          @endif
           <!-- Listings DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">

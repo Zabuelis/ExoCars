@@ -1,18 +1,11 @@
-let userPopup = document.getElementById("userPopup")
-let listingPopup = document.getElementById ("listingPopup");
+let listingPopup = document.getElementById ("listing_form");
 
-function openUserPopup(){
-  userPopup.classList.add("open-popup");
+function displayInsert(){
+  var popup = document.getElementById("listing_form")
+  popup.classList.add("display_insert_form");
 }
 
-function closeUserPopup(){
-  userPopup.classList.remove("open-popup");
-}
-
-function openListingPopup(){
-  listingPopup.classList.add("open-popup");
-}
-
-function closeListingPopup(){
-  listingPopup.classList.remove("open-popup");
+function hideInsert(){
+  var popup = document.getElementById("listing_form")
+  popup.classList.remove("display_insert_form");
 }

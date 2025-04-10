@@ -17,7 +17,6 @@ class ListingSeeder extends Seeder
 
         $listings = [
             [
-                'c_id' => '1',
                 'model' => 'SF90',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -30,7 +29,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '2',
                 'model' => 'SF90',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -43,7 +41,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '3',
                 'model' => '262 GTS',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -56,7 +53,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '4',
                 'model' => '262 GTS',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -69,7 +65,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '5',
                 'model' => '262 GTS',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -82,7 +77,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '6',
                 'model' => '262 GTS',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -95,7 +89,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '7',
                 'model' => '262 GTS',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
@@ -108,7 +101,6 @@ class ListingSeeder extends Seeder
                 'power' => '735'
             ],
             [
-                'c_id' => '8',
                 'model' => '262 GTS',
                 'mileage' => '1249',
                 'comments' => 'Mint condition Ferrari SF90',
