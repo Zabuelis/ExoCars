@@ -112,6 +112,18 @@ class ListingSeeder extends Seeder
                 'displacement' => '3.990',
                 'power' => '735'
             ],
+            [
+                'model' => '296',
+                'mileage' => '17',
+                'comments' => 'Brand new Ferrari 296. Eye catching design with incredible power.',
+                'make_year' => '2022',
+                'color' => 'yellow',
+                'price' => '350000',
+                'img_path' => '/images/listings/9',
+                'manufacturer' => 'Ferrari',
+                'displacement' => '3',
+                'power' => '610'
+            ],
         ];
 
         foreach ($listings as $listing) {

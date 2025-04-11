@@ -14,19 +14,20 @@
   <div class="fluid-container main">
     <div class="car-presentation">
       <h1 class="h1">{{ $listing['manufacturer'] }} {{ $listing['model'] }}</h1>
-      <div id="carouselExampleIndicators" class="carousel slide">
+      <div id="carouselExampleIndicators" class="carousel slide car_slide">
         <div class="carousel-inner">
           @php
           $index = 0
           @endphp
           @foreach($images as $image)
           <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-            <img src="{{ $image }}" class="d-block w-100" alt="...">
+            <img src="{{ $image }}" class="d-block w-100 carousel_image" alt="...">
           </div>
           @php
           $index++
           @endphp
           @endforeach
+          @if($index > 1)
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -35,6 +36,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          @endif
         </div>
       </div>
       <h3 class="h3">Vehicle Information</h3>
@@ -83,7 +85,28 @@
         </div>
       </div>
       <div class="meet">
-        <a href="#" class="btn btn-danger">Schedule a meeting</a>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Schedule a meeting
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule a Meeting</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action=""></form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
