@@ -23,7 +23,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '250000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -35,7 +35,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -47,7 +47,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -59,7 +59,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -71,7 +71,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -83,7 +83,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -95,7 +95,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'
@@ -107,7 +107,7 @@ class ListingSeeder extends Seeder
                 'make_year' => '2020',
                 'color' => 'red',
                 'price' => '200000',
-                'img_path' => '/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg',
+                'img_path' => '/images/listings/1-8',
                 'manufacturer' => 'Ferrari',
                 'displacement' => '3.990',
                 'power' => '735'

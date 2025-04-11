@@ -447,7 +447,7 @@
                       <th>{{ $listing['price'] }}</th>
                       <th>{{ $listing['mileage'] }}</th>
                       <th><img
-                          src="{{ asset($listing['img_path']) }}"
+                          src="{{ $listing['img_path'] }}"
                           class="img-thumbnail"
                           id="listingImg"
                           alt="...">

@@ -38,7 +38,7 @@
         <div class="col">
           <div class="card">
             <img
-              src="{{ asset($listing['img_path']) }}"
+              src="{{ $listing->img_path }}"
               class="card-img-top"
               alt="..." />
             <div class="card-body d-flex flex-column">
