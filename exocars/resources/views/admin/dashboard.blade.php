@@ -382,7 +382,7 @@
                       </div>
                     </div>
                     <div class="col-6">
-                      <input class="form-control" type="file" id="formFile" name="img_path" required />
+                      <input class="form-control" type="file" id="formFile" name="img_path[]" multiple required />
                     </div>
                   </div>
                   <div class="row g-2">

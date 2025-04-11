@@ -15,7 +15,7 @@
     <div class="car-presentation">
       <h1 class="h1">{{ $listing['manufacturer'] }} {{ $listing['model'] }}</h1>
       <img
-        src="{{ ('/images/home/wallpapersden.com_ferrari-supercar-sports-car_1920x1080.jpg') }}"
+        src="{{ asset($listing['img_path']) }}"
         class="img-fluid" />
       <h3 class="h3">Vehicle Information</h3>
       <div class="car-information">
