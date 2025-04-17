@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="meet">
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button id="meet_btn" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Schedule a meeting
         </button>
       </div>
@@ -99,12 +99,43 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action=""></form>
+              <form action="{{ route('create.meeting') }}" method="POST">
+                @csrf
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="input-group">
+                        <input id="car_id" class="form-control" type="hidden" name="c_id" value="{{ $listing['c_id'] }}" readonly>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group">
+                        <input id="acc_id" class="form-control" type="hidden" name="a_id" value="{{ Auth::user()->a_id }}" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+
+                      <label for="date" class="form-label">Date</label>
+                      <div class="input-group">
+                        <input id="date" class="form-control" type="date" name="date" placeholder="Select optimal date" required>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label for="time" class="form-label">Time</label>
+                      <div class="input-group">
+                        <input id="time" class="form-control" type="time" name="time" placeholder="Select optimal time" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </div>
+            </form>
           </div>
         </div>
       </div>

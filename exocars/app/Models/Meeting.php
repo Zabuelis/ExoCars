@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meeting extends Model
 {
+    public $timestamps = false;
     protected $table = 'meeting';
 
     protected $primaryKey = 'm_id';

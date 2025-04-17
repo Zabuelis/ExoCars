@@ -6,6 +6,7 @@ use App\Http\Controllers\CarListingsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MeetingController;
 
 // Public
 Route::view('/', 'pages.home')->name('home');
@@ -37,4 +38,5 @@ Route::middleware('auth')->group(function () {
     // Common user
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/preview/{id}', [CarListingsController::class, 'show']);
+    Route::post('/preview/create/meeting', [MeetingController::class, 'store'])->name('create.meeting');
 });
