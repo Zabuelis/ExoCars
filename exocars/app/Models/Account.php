@@ -19,4 +19,10 @@ class Account extends Authenticatable
     protected $fillable = ['a_id', 'f_name', 'l_name', 'e_mail', 'p_id', 'password'];
 
     protected $hidden = ['password'];
+
+
+    public function isAdmin()
+    {
+        return $this->p_id == 2;
+    }
 }

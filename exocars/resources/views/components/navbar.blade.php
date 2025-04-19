@@ -20,7 +20,9 @@
                         @csrf
                         <button class="nav-link">Logout</button>
                     </form>
+                    @if(auth()->user()->isAdmin())
                     <a class="nav-link" href="/admin">Admin Panel </a>
+                    @endif
                     @else
                     <a class="nav-link" href="/login">Log In </a>
                     @endauth

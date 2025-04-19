@@ -114,28 +114,14 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col">
-
-                      <label for="date" class="form-label">Date</label>
-                      <div class="input-group">
-                        <input id="date" class="form-control" type="date" name="date" placeholder="Select optimal date" required>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <label for="time" class="form-label">Time</label>
-                      <div class="input-group">
-                        <input id="time" class="form-control" type="time" name="time" placeholder="Select optimal time" required>
-                      </div>
-                    </div>
-                  </div>
+                  @livewire('meeting-form')
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+              </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-            </form>
           </div>
         </div>
       </div>

@@ -43,6 +43,10 @@
     height: 50px;
 }
 
+.modal-footer {
+    margin-top: 40px;
+}
+
 
 footer {
     display: flex;
