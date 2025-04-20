@@ -1,11 +1,15 @@
+@php
+use Carbon\Carbon
+@endphp
+
 <div>
     <div class="row">
         <div class="col">
             <label for="date" class="form-label">Date</label>
             <div class="input-group">
                 <input id="date" class="form-control" type="date" wire:model.lazy="selectedDate" name="date"
-                    min="{{ today()->toDateString() }}"
-                    max="{{ today()->addDays(30)->toDateString() }}"
+                    min="{{ Carbon::tomorrow()->toDateString() }}"
+                    max="{{ Carbon::tomorrow()->addDays(30)->toDateString() }}"
                     required>
             </div>
         </div>

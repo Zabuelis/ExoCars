@@ -16,13 +16,14 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="/listings">Listings</a>
                     @auth
+                    <a class="nav-link" href="/profile">Profile </a>
+                    @if(auth()->user()->isAdmin())
+                    <a class="nav-link" href="/admin">Admin Panel </a>
+                    @endif
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button class="nav-link">Logout</button>
                     </form>
-                    @if(auth()->user()->isAdmin())
-                    <a class="nav-link" href="/admin">Admin Panel </a>
-                    @endif
                     @else
                     <a class="nav-link" href="/login">Log In </a>
                     @endauth
