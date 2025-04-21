@@ -6,6 +6,7 @@ use App\Models\Meeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class MeetingController extends Controller
 {
@@ -24,19 +25,20 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
+        $meetings = Meeting::where('a_id', Auth::user()->a_id)->first();
+
+        if (!empty($meetings)) {
+            return redirect()->back()->withErrors('You already have a scheduled meeting');
+        }
+
         $validated = $request->validate([
             'c_id' => 'required|integer',
             'a_id' => 'required|integer',
             'date' => 'required|date',
             'time' => 'required|date_format:H:i'
         ]);
-
-        try {
-            Meeting::create($validated);
-            return redirect()->back()->with('successful', 'Meeting created');
-        } catch (Exception $e) {
-            abort(500, 'Something went wrong');
-        }
+        Meeting::create($validated);
+        return redirect()->route('profile')->with('successful', 'Meeting created');
     }
 
     /**

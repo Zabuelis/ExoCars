@@ -10,6 +10,11 @@
 
 <body>
     @include('components.navbar')
+    @if(session('successful'))
+    <div class="alert alert-success" role="alert">
+        {{ session('successful') }}
+    </div>
+    @endif
     <div id="main" class="container-fluid">
         <div class="text">
             <div class="title">

@@ -41,14 +41,13 @@
             required />
         </div>
 
-        <div class="remember-me">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="remember"
-            name="Remember me" />
-          <label for="form-check-label">Remember me</label>
+        @if($errors->any())
+        <div class="alert alert-warning" role="alert">
+          @foreach($errors->all() as $error)
+          {{ $error }}<br>
+          @endforeach
         </div>
+        @endif
 
         <button type="submit" class="btn btn-danger">Login</button>
 
@@ -56,15 +55,9 @@
           <p>Don't have an account? <a href="/register"> Register</a></p>
         </div>
 
-        @if($errors->any())
-        <ul>
-          @foreach($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-        @endif
       </form>
     </div>
+  </div>
   </div>
 
   <!-- Footer-->

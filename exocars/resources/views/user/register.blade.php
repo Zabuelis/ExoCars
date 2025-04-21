@@ -78,20 +78,19 @@
             required />
         </div>
 
+        @if($errors->any())
+        <div class="alert alert-warning" role="alert">
+          @foreach($errors->all() as $error)
+          {{ $error }}<br>
+          @endforeach
+        </div>
+        @endif
+
         <button type="submit" class="btn btn-danger">Register</button>
 
         <div class="text-center">
           <p>Already have an account? <a href="/login">Login</a></p>
         </div>
-
-        @if($errors->any())
-        <ul>
-          @foreach($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-        @endif
-
       </form>
     </div>
   </div>

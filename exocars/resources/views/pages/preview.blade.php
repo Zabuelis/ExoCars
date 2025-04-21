@@ -88,6 +88,13 @@
         <button id="meet_btn" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Schedule a meeting
         </button>
+        @if($errors->any())
+        <div class="alert alert-warning" role="alert">
+          @foreach($errors->all() as $error)
+          {{ $error }}<br>
+          @endforeach
+        </div>
+        @endif
       </div>
 
       <!-- Modal -->

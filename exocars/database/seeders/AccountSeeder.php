@@ -22,6 +22,6 @@ class AccountSeeder extends Seeder
             'p_id' => '2',
             'password' => Hash::make("adminpass")
         ]);
-        Account::factory(10)->create();
+        Account::factory(1000)->create();
     }
 }

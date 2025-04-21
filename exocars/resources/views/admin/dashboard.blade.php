@@ -111,7 +111,7 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->f_name }} {{ auth()->user()->l_name }}</span>
                 <i class="bx bx-user"></i>
               </a>
               <!-- Dropdown - User Information -->
@@ -135,6 +135,11 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+          @if(session('successful'))
+          <div class="alert alert-success" role="alert">
+            {{ session('successful') }}
+          </div>
+          @endif
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tables</h1>
           <!-- DataTales Example -->
@@ -254,11 +259,16 @@
                       <td>{{ $account['l_name'] }}</td>
                       <td>{{ $account['e_mail'] }}</td>
                       <td>
+                        <!-- Check whether a listed user is an admin ir not -->
+                        @if($account->p_id != 2)
                         <form action="{{ route('destroy.user', $account['a_id']) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger">User {{ $account['a_id'] }} </button>
                         </form>
+                        @else
+                        Admin User
+                        @endif
                       </td>
                     </tr>
                     @endforeach
@@ -395,16 +405,16 @@
                   </div>
                 </div>
               </form>
+              @if($errors->any())
+              <div class="alert alert-warning" role="alert">
+                @foreach($errors->all() as $error)
+                {{ $error }}<br>
+                @endforeach
+              </div>
+              @endif
             </div>
           </div>
 
-          @if($errors->any())
-          <ul>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-          @endif
           <!-- Listings DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
