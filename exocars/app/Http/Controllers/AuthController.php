@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserRegister;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -32,6 +34,8 @@ class AuthController extends Controller
         $validated['password'] = Hash::make($validated['password']);
 
         $user = Account::create($validated);
+
+        Mail::to($user->e_mail)->send(new UserRegister($user));
 
         Auth::login($user);
 

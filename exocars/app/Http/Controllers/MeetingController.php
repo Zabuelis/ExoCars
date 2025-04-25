@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MeetingCreated;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class MeetingController extends Controller
 {
@@ -37,7 +39,11 @@ class MeetingController extends Controller
             'date' => 'required|date',
             'time' => 'required|date_format:H:i'
         ]);
-        Meeting::create($validated);
+
+        $meeting = Meeting::create($validated);
+
+        Mail::to(Auth::user()->e_mail)->send(new MeetingCreated($meeting, Auth::user()->f_name));
+
         return redirect()->route('profile')->with('successful', 'Meeting created');
     }
 
