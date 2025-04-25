@@ -18,23 +18,28 @@ class MeetingForm extends Component
 
     public function getAvailableTimes($date)
     {
-        $this->availableTimes = [];
+        if ($date != '') {
 
-        $meetingTimes = Meeting::where('date', $date)->pluck('time')->map(function ($t) {
-            return Carbon::parse($t)->format('H:i');
-        });
+            $this->availableTimes = [];
 
-        $start = Carbon::createFromTime(8, 0);
-        $end = Carbon::createFromTime(17, 0);
+            $meetingTimes = Meeting::where('date', $date)->pluck('time')->map(function ($t) {
+                return Carbon::parse($t)->format('H:i');
+            });
 
-        while ($start <= $end) {
-            $time = $start->format('H:i');
+            $start = Carbon::createFromTime(8, 0);
+            $end = Carbon::createFromTime(17, 0);
 
-            if (!$meetingTimes->contains($time)) {
-                $this->availableTimes[] = $time;
+            while ($start <= $end) {
+                $time = $start->format('H:i');
+
+                if (!$meetingTimes->contains($time)) {
+                    $this->availableTimes[] = $time;
+                }
+
+                $start->addMinutes(90);
             }
-
-            $start->addMinutes(90);
+        } else {
+            $this->availableTimes = [];
         }
     }
 
