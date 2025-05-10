@@ -66,7 +66,7 @@ class AdminController extends Controller
             return redirect()->back()->with('successful', 'Listing removed');
         } catch (Exception $e) {
             Log::error('Removal of listing failed', $e->getMessage());
-            abort(500, 'Something went wrong');
+            return redirect()->back()->withErrors(['error' => 'Failed to delete the listing. Please try again.']);
         }
     }
 
@@ -107,7 +107,7 @@ class AdminController extends Controller
             return redirect()->back()->with('successful', 'Listing created');
         } catch (Exception $e) {
             Log::error('Creation of a listing failed', $e->getMessage());
-            abort(500, 'Something went wrong');
+            return redirect()->back()->withErrors(['error' => 'Failed to insert the listing. Please try again.']);
         }
     }
 }

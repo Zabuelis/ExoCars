@@ -61,11 +61,7 @@
   </div>
 
   <!-- Footer-->
-  <footer>
-    <div class="container-fluid footer">
-      <p>All rights reserved to ExoCars®</p>
-    </div>
-  </footer>
+  @include('components.footer')
 
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

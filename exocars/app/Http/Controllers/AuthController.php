@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         $user = Account::create($validated);
 
-        Mail::to($user->e_mail)->send(new UserRegister($user));
+        Mail::to($user->e_mail)->queue(new UserRegister($user));
 
         Auth::login($user);
 

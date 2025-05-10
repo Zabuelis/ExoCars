@@ -33,19 +33,11 @@ body {
 }
 
 .main-container {
-    display: flex;
-    justify-content: center;
     margin-bottom: 20px;
     min-height: 100vh;
 }
 
-
-.container-list {
-    margin-left: 40px;
-    max-width: 65%;
-}
-
-.col {
+.col-md-4 {
     display: flex;
     justify-content: center;
 }

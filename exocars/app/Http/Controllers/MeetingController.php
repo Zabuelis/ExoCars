@@ -52,7 +52,7 @@ class MeetingController extends Controller
 
         $meeting = Meeting::create($validated);
 
-        Mail::to(Auth::user()->e_mail)->send(new MeetingCreated($meeting, Auth::user()->f_name));
+        Mail::to(Auth::user()->e_mail)->queue(new MeetingCreated($meeting, Auth::user()->f_name));
 
         return redirect()->route('profile')->with('successful', 'Meeting created');
     }
