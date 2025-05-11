@@ -14,6 +14,10 @@
     <div class="alert alert-success" role="alert">
         {{ session('successful') }}
     </div>
+    @elseif(session('failed'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('failed') }}
+    </div>
     @endif
     <div id="main" class="container-fluid">
         <div class="text">

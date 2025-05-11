@@ -139,6 +139,10 @@
           <div class="alert alert-success" role="alert">
             {{ session('successful') }}
           </div>
+          @elseif(session('failed'))
+          <div class="alert alert-danger" role="alert">
+            {{ session('failed') }}
+          </div>
           @endif
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tables</h1>
@@ -400,7 +404,7 @@
                       <button id="submit_car_button" type="submit" class="btn btn-success">Submit</button>
                     </div>
                     <div class="col-6">
-                      <button id="cancel_car_button" class="btn btn-danger" onclick="hideInsert()">Cancel</button>
+                      <button id="cancel_car_button" type="button" class="btn btn-danger" onclick="hideInsert()">Cancel</button>
                     </div>
                   </div>
                 </div>

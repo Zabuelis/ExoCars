@@ -37,16 +37,26 @@ class AdminController extends Controller
 
     public function destroyUser($id)
     {
-        Account::findOrFail($id)->delete();
+        try {
+            Account::findOrFail($id)->delete();
 
-        return redirect()->back()->with('successful', 'User account removed');
+            return redirect()->back()->with('successful', 'User account removed');
+        } catch (Exception $e) {
+            Log::error("User destruction failed", $e->getMessage());
+            return redirect()->back()->with('failed', 'Failed to remove the selected user.');
+        }
     }
 
     public function destroyMeeting($id)
     {
-        Meeting::findOrFail($id)->delete();
+        try {
+            Meeting::findOrFail($id)->delete();
 
-        return redirect()->back()->with('successful', 'Meeting removed');
+            return redirect()->back()->with('successful', 'Meeting removed');
+        } catch (Exception $e) {
+            Log::error("Meeting destruction failed", $e->getMessage());
+            return redirect()->back()->with('failed', 'Failed to destroy a meeting.');
+        }
     }
 
     public function destroyListing($id)
@@ -101,6 +111,7 @@ class AdminController extends Controller
             if ($request->hasFile('img_path')) {
                 foreach ($request->file('img_path') as $file) {
                     $filename = time() . '_' . $file->getClientOriginalName();
+
                     $file->move($absolutePath, $filename);
                 }
             }

@@ -12,6 +12,11 @@
   @include('components.navbar')
   <!-- Display of car's image and information-->
   <div class="fluid-container main">
+    @if(session('failed'))
+    <div class="alert alert-danger" role="alert">
+      {{ session('failed') }}
+    </div>
+    @endif
     <div class="car-presentation">
       <h1 class="h1">{{ $listing['manufacturer'] }} {{ $listing['model'] }}</h1>
       <div id="carouselExampleIndicators" class="carousel slide car_slide">

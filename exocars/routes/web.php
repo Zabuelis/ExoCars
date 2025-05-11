@@ -5,9 +5,6 @@ use App\Http\Controllers\CarListingsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MeetingController;
-use App\Http\Controllers\ProfileController;
-use App\Mail\UserRegister;
-use Illuminate\Support\Facades\Mail;
 
 // Public
 Route::view('/', 'pages.home')->name('home');
@@ -17,7 +14,7 @@ Route::get('/logout', function () {
     return redirect()->route('home');
 });
 
-// Authentication
+// For Authentication
 Route::middleware('guest')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLogin')->name('login');
     Route::get('/register', 'showRegister')->name('register');
@@ -40,6 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/preview/{id}', [CarListingsController::class, 'show']);
     Route::post('/preview/create/meeting', [MeetingController::class, 'store'])->name('create.meeting');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::delete('/profile/remove_meeting/{id}', [ProfileController::class, 'destroyMeeting'])->name('destroy.user.meeting');
+    Route::get('/profile', [MeetingController::class, 'show'])->name('profile');
+    Route::delete('/profile/remove_meeting/{id}', [MeetingController::class, 'destroy'])->name('destroy.user.meeting');
 });
