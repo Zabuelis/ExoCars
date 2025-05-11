@@ -9,6 +9,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AdminController extends Controller
 {
@@ -42,7 +44,10 @@ class AdminController extends Controller
 
             return redirect()->back()->with('successful', 'User account removed');
         } catch (Exception $e) {
-            Log::error("User destruction failed", $e->getMessage());
+            Log::error("User destruction failed", [
+                'message' => $e->getMessage(),
+                'exception' => $e
+            ]);
             return redirect()->back()->with('failed', 'Failed to remove the selected user.');
         }
     }
@@ -54,7 +59,10 @@ class AdminController extends Controller
 
             return redirect()->back()->with('successful', 'Meeting removed');
         } catch (Exception $e) {
-            Log::error("Meeting destruction failed", $e->getMessage());
+            Log::error("Meeting destruction failed", [
+                'message' => $e->getMessage(),
+                'exception' => $e
+            ]);
             return redirect()->back()->with('failed', 'Failed to destroy a meeting.');
         }
     }
@@ -75,7 +83,10 @@ class AdminController extends Controller
 
             return redirect()->back()->with('successful', 'Listing removed');
         } catch (Exception $e) {
-            Log::error('Removal of listing failed', $e->getMessage());
+            Log::error('Removal of listing failed', [
+                'message' => $e->getMessage(),
+                'exception' => $e
+            ]);
             return redirect()->back()->withErrors(['error' => 'Failed to delete the listing. Please try again.']);
         }
     }
@@ -100,8 +111,6 @@ class AdminController extends Controller
 
             $validated['img_path'] = $path;
 
-            CarListing::create($validated);
-
             $absolutePath = public_path($path);
 
             if (!File::exists($absolutePath)) {
@@ -109,16 +118,24 @@ class AdminController extends Controller
             }
 
             if ($request->hasFile('img_path')) {
+                $i = 0;
                 foreach ($request->file('img_path') as $file) {
-                    $filename = time() . '_' . $file->getClientOriginalName();
-
-                    $file->move($absolutePath, $filename);
+                    $filename = $i . '_' . $file->getClientOriginalName();
+                    $manager = new ImageManager(new Driver());
+                    $img = $manager->read($file->getRealPath());
+                    $img->resize(800, 500)->toPng()->save($absolutePath . '/' . $filename);
+                    $i++;
                 }
             }
+
+            CarListing::create($validated);
             return redirect()->back()->with('successful', 'Listing created');
         } catch (Exception $e) {
-            Log::error('Creation of a listing failed', $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'Failed to insert the listing. Please try again.']);
+            Log::error('Listing insertion failed', [
+                'message' => $e->getMessage(),
+                'exception' => $e
+            ]);
+            return redirect()->back()->with(['error' => 'Failed to insert the listing. Please try again.']);
         }
     }
 }

@@ -58,7 +58,10 @@ class MeetingController extends Controller
 
             return redirect()->route('profile')->with('successful', 'Meeting created');
         } catch (Exception $e) {
-            Log::error("Meeting creation failed", $e->getMessage());
+            Log::error("Meeting creation failed", [
+                'message' => $e->getMessage(),
+                'exception' => $e
+            ]);
             return redirect()->back()->with('failed', 'Meeting creation failed, please try again later');
         }
     }
@@ -90,7 +93,10 @@ class MeetingController extends Controller
 
             return redirect()->back()->with('successful', 'Meeting removed');
         } catch (Exception $e) {
-            Log::error("Meeting destruction failed", $e->getMessage());
+            Log::error("Meeting destruction failed", [
+                'message' => $e->getMessage(),
+                'exception' => $e
+            ]);
             return redirect()->back()->with('failed', 'Meeting desctruction failed, please try again');
         }
     }
