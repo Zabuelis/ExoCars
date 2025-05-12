@@ -10,7 +10,7 @@ class CarListingsController extends Controller
 {
     public function index()
     {
-        $listings = CarListing::orderBy('model', 'desc')->get();
+        $listings = CarListing::orderBy('model', 'asc')->paginate(9);
 
         foreach ($listings as $listing) {
             $path = public_path($listing->img_path);

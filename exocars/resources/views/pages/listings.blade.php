@@ -13,23 +13,6 @@
 
 <body>
   @include('components.navbar')
-  <!-- Search bar -->
-  <div class="filter-container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="search-container">
-          <input
-            type="text"
-            id="carSearch"
-            onkeyup="searchCars()"
-            class="form-control search-input"
-            placeholder="Search..." />
-          <i class="bx bx-search-alt search-icon"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Grid display of listed cars-->
   <div class="main-container">
     <div class="container-sm mt-4">
@@ -56,6 +39,9 @@
       </div>
     </div>
   </div>
+  <div class="container-sm">
+    {{ $listings->links('pagination::bootstrap-5') }}
+  </div>
   <!-- Footer-->
   @include('components.footer')
 
@@ -63,8 +49,6 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-
-  <script src="{{ asset('js/listings/scripts.js') }}"></script>
 </body>
 
 </html>

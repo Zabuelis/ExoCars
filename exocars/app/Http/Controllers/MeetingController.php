@@ -44,6 +44,11 @@ class MeetingController extends Controller
                 'time' => 'required|date_format:H:i'
             ]);
 
+            if ($validated['a_id'] !== Auth::user()->a_id) {
+                Log::error("Meeting creation failed. ID " . Auth::user()->a_id . " user tried to force a meeting creation on another user");
+                return redirect()->back()->with('failed', 'Meeting creation failed, please try again later');
+            }
+
             $meetingDate = Carbon::parse($validated['date']);
             if ($meetingDate->isWeekend()) {
                 return redirect()->back()->withErrors('Meetings can not be scheduled on weekends.');
@@ -89,8 +94,13 @@ class MeetingController extends Controller
     public function destroy($id)
     {
         try {
-            Meeting::findOrFail($id)->delete();
+            $meeting = Meeting::findOrFail($id);
 
+            if ($meeting->a_id !== Auth::user()->a_id) {
+                Log::error("Meeting destruction failed. ID" . Auth::user()->a_id . "user tried to force meeting delete on another user");
+                return redirect()->back()->with('failed', 'Meeting desctruction failed, please try again');
+            }
+            $meeting->delete();
             return redirect()->back()->with('successful', 'Meeting removed');
         } catch (Exception $e) {
             Log::error("Meeting destruction failed", [
