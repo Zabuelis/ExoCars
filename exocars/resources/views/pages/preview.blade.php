@@ -18,7 +18,7 @@
   @endif
   <div class="fluid-container main">
     <div class="car-presentation">
-      <h1 class="h1">{{ $listing['manufacturer'] }} {{ $listing['model'] }}</h1>
+      <h1 class="h1">{{ $listing->manufacturer }} {{ $listing->model }}</h1>
       <div id="carouselExampleIndicators" class="carousel slide car_slide">
         <div class="carousel-inner">
           @php
@@ -26,7 +26,7 @@
           @endphp
           @foreach($images as $image)
           <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-            <img src="{{ $image }}" class="d-block w-100 carousel_image" alt="...">
+            <img src="{{ asset($image) }}" class="d-block w-100 carousel_image" alt="...">
           </div>
           @php
           $index++
@@ -51,39 +51,35 @@
             <tbody>
               <tr>
                 <th scope="row">Brand</th>
-                <td>{{ $listing['manufacturer'] }}</td>
+                <td>{{ $listing->manufacturer }}</td>
               </tr>
               <tr>
                 <th scope="row">Model</th>
-                <td>{{ $listing['model'] }}</td>
+                <td>{{ $listing->model }}</td>
               </tr>
               <tr>
                 <th scope="row">Make Year</th>
-                <td>{{ $listing['make_year'] }}</td>
+                <td>{{ $listing->make_year }}</td>
               </tr>
               <tr>
                 <th scope="row">Mileage</th>
-                <td>{{ $listing['mileage'] }} km</td>
+                <td>{{ $listing->mileage }} km</td>
               </tr>
               <tr>
                 <th scope="row">Color</th>
-                <td>{{ $listing['color'] }}</td>
-              </tr>
-              <tr>
-                <th scope="row">Condition</th>
-                <td>Mint</td>
+                <td>{{ $listing->color }}</td>
               </tr>
               <tr>
                 <th scope="row">Price</th>
-                <td>{{ $listing['price'] }} Euro</td>
+                <td>{{ $listing->price }} Euro</td>
               </tr>
               <tr>
                 <th scope="row">Displacement</th>
-                <td>{{ $listing['displacement'] }} l</td>
+                <td>{{ $listing->displacement }} l</td>
               </tr>
               <tr>
                 <th scope="row">Power</th>
-                <td>{{ $listing['power'] }} kw</td>
+                <td>{{ $listing->power }} kw</td>
               </tr>
             </tbody>
           </table>
@@ -116,7 +112,7 @@
                   <div class="row">
                     <div class="col">
                       <div class="input-group">
-                        <input id="car_id" class="form-control" type="hidden" name="c_id" value="{{ $listing['c_id'] }}" readonly>
+                        <input id="car_id" class="form-control" type="hidden" name="c_id" value="{{ $listing->c_id }}" readonly>
                       </div>
                     </div>
                     <div class="col">

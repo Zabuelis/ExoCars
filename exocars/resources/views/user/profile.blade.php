@@ -22,7 +22,7 @@
     <div id="main" class="container-fluid">
         <div class="text">
             <div class="title">
-                <h2 class="title_text">Hello, {{ $account->f_name }} {{ $account->l_name }}</h2>
+                <h2 class="title_text">Hello, {{ Auth::user()->f_name }} {{ Auth::user()->l_name }}</h2>
             </div>
             <div class="bio">
                 <p class="text-start">Here you can see all of your future meetings</p>

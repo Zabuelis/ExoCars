@@ -14,8 +14,8 @@ class MeetingSeeder extends Seeder
     public function run(): void
     {
         $meetings = [
-            ['a_id' => '1', 'c_id' => '2', 'date' => '2025-05-01', 'time' => '10:30'],
-            ['a_id' => '7', 'c_id' => '2', 'date' => '2025-05-01', 'time' => '12:30']
+            ['a_id' => '1', 'c_id' => '2', 'date' => '2025-05-30', 'time' => '10:30'],
+            ['a_id' => '7', 'c_id' => '2', 'date' => '2025-05-30', 'time' => '12:30']
         ];
 
         foreach ($meetings as $meeting) {

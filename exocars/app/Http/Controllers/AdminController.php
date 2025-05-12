@@ -16,16 +16,16 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $listings = CarListing::orderBy('model', 'desc')->get();
-        $accounts = Account::orderBy('f_name', 'desc')->get();
-        $meetings = Meeting::orderBy('m_id', 'desc')->get();
+        $listings = CarListing::get();
+        $accounts = Account::get();
+        $meetings = Meeting::get();
 
         foreach ($listings as $listing) {
             $path = public_path($listing->img_path);
 
             $images = File::files($path);
 
-            $listing->img_path = asset($listing->img_path) . '/' . $images[0]->getFilename();
+            $listing->img_path = $listing->img_path . '/' . $images[0]->getFilename();
         }
 
         return view('admin.dashboard', compact('listings', 'accounts', 'meetings'));

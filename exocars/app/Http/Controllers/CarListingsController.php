@@ -17,7 +17,7 @@ class CarListingsController extends Controller
 
             $images = File::files($path);
 
-            $listing->img_path = asset($listing->img_path) . '/' . $images[0]->getFilename();
+            $listing->img_path = $listing->img_path . '/' . $images[0]->getFilename();
         }
 
         return view('pages.listings', ['listings' => $listings]);
@@ -35,7 +35,7 @@ class CarListingsController extends Controller
 
         foreach ($imageFiles as $image) {
 
-            $images[] = asset($listing->img_path) . '/' . $image->getFilename();
+            $images[] = $listing->img_path . '/' . $image->getFilename();
         }
 
         return view('pages.preview', compact('listing', 'images'));

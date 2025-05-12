@@ -29,6 +29,13 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'c_id' => 'required|integer',
+            'a_id' => 'required|integer',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i'
+        ]);
+
         try {
             $meetings = Meeting::where('a_id', Auth::user()->a_id)->first();
             $meetingTimes = ['08:00', '09:30', '11:00', '12:30', '14:00', '15:30', '17:00'];
@@ -37,14 +44,16 @@ class MeetingController extends Controller
                 return redirect()->back()->withErrors('You already have a scheduled meeting');
             }
 
-            $validated = $request->validate([
-                'c_id' => 'required|integer',
-                'a_id' => 'required|integer',
-                'date' => 'required|date',
-                'time' => 'required|date_format:H:i'
-            ]);
+            $meetings = Meeting::where('date', $validated['date'])->pluck('time')->map(function ($t) {
+                return Carbon::parse($t)->format('H:i');
+            });
 
-            if ($validated['a_id'] !== Auth::user()->a_id) {
+            if ($meetings->contains($validated['time'])) {
+                Log::error("Meeting creation failed. ID " . Auth::user()->a_id . " user tried to force a meeting creation with already used time");
+                return redirect()->back()->with('failed', 'Meeting creation failed, please try again later');
+            }
+
+            if ((int)$validated['a_id'] !== Auth::user()->a_id) {
                 Log::error("Meeting creation failed. ID " . Auth::user()->a_id . " user tried to force a meeting creation on another user");
                 return redirect()->back()->with('failed', 'Meeting creation failed, please try again later');
             }
@@ -78,9 +87,8 @@ class MeetingController extends Controller
     {
         $id = Auth::user()->a_id;
         $meetings = Meeting::where('a_id', $id)->get();
-        $account = Account::where('a_id', $id)->first();
 
-        return view('user.profile', compact('meetings', 'account'));
+        return view('user.profile', compact('meetings'));
     }
 
     /**

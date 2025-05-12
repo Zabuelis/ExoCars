@@ -21,13 +21,13 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="{{ $listing->img_path }}"
+              src="{{ asset($listing->img_path) }}"
               class="card-img-top"
               alt="..." />
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{ $listing['model'] }}</h5>
+              <h5 class="card-title">{{ $listing->model }}</h5>
               <p class="card-text">
-                {{ $listing['comments'] }}
+                {{ $listing->comments }}
               </p>
               <div class="mt-auto text-start">
                 <a href="/preview/{{ $listing['c_id'] }}" class="btn btn-danger">Preview</a>

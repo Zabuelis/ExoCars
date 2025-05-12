@@ -191,28 +191,28 @@
                       <th>{{ $meeting['a_id'] }}</th>
                       <th>
                         @foreach ($accounts as $account)
-                        @if($meeting['a_id'] == $account['a_id'])
-                        {{ $account['f_name'] }}
+                        @if($meeting->a_id == $account->a_id)
+                        {{ $account->f_name }}
                         @break
                         @endif
                         @endforeach
                       </th>
                       <th>
                         @foreach ($listings as $listing)
-                        @if($meeting['c_id'] == $listing['c_id'])
-                        {{ $listing['model'] }}
+                        @if($meeting->c_id == $listing->c_id)
+                        {{ $listing->model }}
                         @break
                         @endif
                         @endforeach
                       </th>
-                      <th>{{ $meeting['c_id'] }}</th>
-                      <th>{{ $meeting['date'] }}</th>
-                      <th>{{ $meeting['time'] }}</th>
+                      <th>{{ $meeting->c_id }}</th>
+                      <th>{{ $meeting->date }}</th>
+                      <th>{{ $meeting->time }}</th>
                       <td>
                         <form action="{{ route('destroy.meeting', $meeting['m_id']) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Meeting {{ $meeting['m_id'] }} </button>
+                          <button type="submit" class="btn btn-danger">Meeting {{ $meeting->m_id }} </button>
                         </form>
                       </td>
                     </tr>
@@ -258,17 +258,17 @@
                   <tbody>
                     @foreach($accounts as $account)
                     <tr>
-                      <td>{{ $account['a_id'] }}</td>
-                      <td>{{ $account['f_name'] }}</td>
-                      <td>{{ $account['l_name'] }}</td>
-                      <td>{{ $account['e_mail'] }}</td>
+                      <td>{{ $account->a_id }}</td>
+                      <td>{{ $account->f_name }}</td>
+                      <td>{{ $account->l_name }}</td>
+                      <td>{{ $account->e_mail }}</td>
                       <td>
-                        <!-- Check whether a listed user is an admin ir not -->
+                        <!-- Check whether a listed user is an admin or not -->
                         @if($account->p_id != 2)
-                        <form action="{{ route('destroy.user', $account['a_id']) }}" method="POST">
+                        <form action="{{ route('destroy.user', $account->a_id) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">User {{ $account['a_id'] }} </button>
+                          <button type="submit" class="btn btn-danger">User {{ $account->a_id }} </button>
                         </form>
                         @else
                         Admin User
@@ -456,12 +456,12 @@
                   <tbody>
                     @foreach($listings as $listing)
                     <tr>
-                      <th>{{ $listing['c_id'] }}</th>
-                      <th>{{ $listing['model'] }}</th>
-                      <th>{{ $listing['price'] }}</th>
-                      <th>{{ $listing['mileage'] }}</th>
+                      <th>{{ $listing->c_id }}</th>
+                      <th>{{ $listing->model }}</th>
+                      <th>{{ $listing->price }}</th>
+                      <th>{{ $listing->mileage }}</th>
                       <th><img
-                          src="{{ $listing['img_path'] }}"
+                          src="{{ asset($listing->img_path) }}"
                           class="img-thumbnail"
                           id="listingImg"
                           alt="...">
@@ -470,7 +470,7 @@
                         <form action="{{ route('destroy.listing', $listing['c_id']) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Listing {{ $listing['c_id'] }} </button>
+                          <button type="submit" class="btn btn-danger">Listing {{ $listing->c_id }} </button>
                         </form>
                       </td>
                     </tr>
