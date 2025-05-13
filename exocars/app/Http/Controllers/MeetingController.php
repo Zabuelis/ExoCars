@@ -58,6 +58,7 @@ class MeetingController extends Controller
             if ($meetingDate->isWeekend()) {
                 return redirect()->back()->withErrors('Meetings can not be scheduled on weekends.');
             }
+
             if (!in_array($validated['time'], $meetingTimes)) {
                 return redirect()->back()->withErrors('Please select time only from the provided times.');
             }
@@ -84,7 +85,7 @@ class MeetingController extends Controller
         $id = Auth::user()->a_id;
         $meetings = Meeting::where('a_id', $id)->get();
 
-        return view('user.profile', compact('meetings'));
+        return view('user.profile', ['meetings' => $meetings]);
     }
 
     /**
@@ -104,7 +105,9 @@ class MeetingController extends Controller
                 Log::error("Meeting destruction failed. ID" . Auth::user()->a_id . "user tried to force meeting delete on another user");
                 return redirect()->back()->with('failed', 'Meeting desctruction failed, please try again');
             }
+
             $meeting->delete();
+
             return redirect()->back()->with('successful', 'Meeting removed');
         } catch (Exception $e) {
             Log::error("Meeting destruction failed", [

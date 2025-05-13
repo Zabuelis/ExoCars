@@ -46,6 +46,8 @@ class AdminController extends Controller
                 return redirect()->back()->with('failed', 'The user you are trying to remove is an admin.');
             }
 
+            $account->delete();
+
             return redirect()->back()->with('successful', 'User account removed');
         } catch (Exception $e) {
             Log::error("User destruction failed", [

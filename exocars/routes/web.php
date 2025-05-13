@@ -14,7 +14,7 @@ Route::get('/logout', function () {
     return redirect()->route('home');
 });
 
-// For Authentication
+// For unauthenticated users
 Route::middleware('guest')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLogin')->name('login');
     Route::get('/register', 'showRegister')->name('register');
