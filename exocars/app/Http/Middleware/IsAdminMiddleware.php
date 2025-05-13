@@ -18,6 +18,6 @@ class IsAdminMiddleware
         if (Auth::user()->p_id == 2) {
             return $next($request);
         }
-        redirect()->route('login');
+        return abort(403);
     }
 }

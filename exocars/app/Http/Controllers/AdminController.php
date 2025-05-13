@@ -40,7 +40,11 @@ class AdminController extends Controller
     public function destroyUser($id)
     {
         try {
-            Account::findOrFail($id)->delete();
+            $account = Account::findOrFail($id);
+
+            if ($account->p_id == 2) {
+                return redirect()->back()->with('failed', 'The user you are trying to remove is an admin.');
+            }
 
             return redirect()->back()->with('successful', 'User account removed');
         } catch (Exception $e) {

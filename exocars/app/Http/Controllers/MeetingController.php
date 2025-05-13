@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Mail;
 
 class MeetingController extends Controller
 {
-    public function index() {}
+    public function index()
+    {
+        $meetings = Meeting::get();
+
+        return view('someview', ['meetings' => $meetings]);
+    }
 
     /**
      * Show the form for creating a new resource.

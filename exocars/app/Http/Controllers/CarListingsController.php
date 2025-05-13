@@ -41,5 +41,12 @@ class CarListingsController extends Controller
         return view('pages.preview', compact('listing', 'images'));
     }
 
-    public function create() {}
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            // Validation rules here
+        ]);
+
+        CarListing::create($validated);
+    }
 }
