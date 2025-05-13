@@ -44,15 +44,6 @@ class MeetingController extends Controller
                 return redirect()->back()->withErrors('You already have a scheduled meeting');
             }
 
-            $meetings = Meeting::where('date', $validated['date'])->pluck('time')->map(function ($t) {
-                return Carbon::parse($t)->format('H:i');
-            });
-
-            if ($meetings->contains($validated['time'])) {
-                Log::error("Meeting creation failed. ID " . Auth::user()->a_id . " user tried to force a meeting creation with already used time");
-                return redirect()->back()->with('failed', 'Meeting creation failed, please try again later');
-            }
-
             if ((int)$validated['a_id'] !== Auth::user()->a_id) {
                 Log::error("Meeting creation failed. ID " . Auth::user()->a_id . " user tried to force a meeting creation on another user");
                 return redirect()->back()->with('failed', 'Meeting creation failed, please try again later');

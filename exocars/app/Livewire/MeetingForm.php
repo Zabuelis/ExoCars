@@ -22,8 +22,8 @@ class MeetingForm extends Component
 
             $this->availableTimes = [];
 
-            $meetingTimes = Meeting::where('date', $date)->pluck('time')->map(function ($t) {
-                return Carbon::parse($t)->format('H:i');
+            $meetingTimes = Meeting::where('date', $date)->pluck('time')->map(function ($time) {
+                return Carbon::parse($time)->format('H:i');
             });
 
             $start = Carbon::createFromTime(8, 0);
