@@ -37,7 +37,7 @@ class MeetingController extends Controller
         $validated = $request->validate([
             'c_id' => 'required|integer',
             'a_id' => 'required|integer',
-            'date' => 'required|date',
+            'date' => 'required|date|after:today',
             'time' => 'required|date_format:H:i'
         ]);
 
@@ -83,9 +83,9 @@ class MeetingController extends Controller
     public function show($id = null)
     {
         $id = Auth::user()->a_id;
-        $meetings = Meeting::where('a_id', $id)->get();
+        $meeting = Meeting::where('a_id', $id)->first();
 
-        return view('user.profile', ['meetings' => $meetings]);
+        return view('user.profile', ['meeting' => $meeting]);
     }
 
     /**

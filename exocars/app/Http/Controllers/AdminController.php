@@ -123,18 +123,17 @@ class AdminController extends Controller
                 File::makeDirectory($absolutePath, 0755, true);
             }
 
-            if ($request->hasFile('img_path')) {
-                $i = 0;
-                foreach ($request->file('img_path') as $file) {
-                    $filename = $i . '_' . $file->getClientOriginalName();
-                    $manager = new ImageManager(new Driver());
-                    $img = $manager->read($file->getRealPath());
-                    $img->resize(800, 500)->toPng()->save($absolutePath . '/' . $filename);
-                    $i++;
-                }
+            $i = 0;
+            foreach ($request->file('img_path') as $file) {
+                $filename = $i . '_' . $file->getClientOriginalName();
+                $manager = new ImageManager(new Driver());
+                $img = $manager->read($file->getRealPath());
+                $img->resize(800, 500)->toPng()->save($absolutePath . '/' . $filename);
+                $i++;
             }
 
             CarListing::create($validated);
+
             return redirect()->back()->with('successful', 'Listing created');
         } catch (Exception $e) {
             Log::error('Listing insertion failed', [

@@ -31,7 +31,7 @@
         <div class="table_div">
             <table class="table">
                 @php
-                $i=0
+                $i=1
                 @endphp
                 <thead>
                     <tr>
@@ -41,11 +41,8 @@
                         <th scope="col">Cancel</th>
                     </tr>
                 </thead>
+                @if(!empty($meeting))
                 <tbody>
-                    @foreach($meetings as $meeting)
-                    @php
-                    $i++
-                    @endphp
                     <tr>
                         <th scope=row>{{ $i }}</th>
                         <td>{{ $meeting->date }}</td>
@@ -57,8 +54,8 @@
                                 <button type="submit" class="btn btn-danger">Delete Meeting</button>
                         </td>
                     </tr>
-                    @endforeach
                 </tbody>
+                @endif
             </table>
         </div>
     </div>

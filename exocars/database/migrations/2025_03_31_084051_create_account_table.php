@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('p_id')->default(1);
             $table->string('password', 255);
 
-            $table->foreign('p_id')->references('p_id')->on('privilege');
+            $table->foreign('p_id')->references('p_id')->on('privilege')->onDelete('cascade');
         });
     }
 
