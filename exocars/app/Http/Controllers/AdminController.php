@@ -16,9 +16,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $listings = CarListing::get();
-        $accounts = Account::get();
-        $meetings = Meeting::get();
+        $listings = CarListing::orderBy('c_id', 'asc')->get();
+        $accounts = Account::orderBy('a_id', 'asc')->get();
+        $meetings = Meeting::orderBy('m_id', 'asc')->get();
 
         foreach ($listings as $listing) {
             $path = public_path($listing->img_path);
